@@ -1,4 +1,4 @@
-# DeskFlow API
+# DeskFlow API: Sistema de Gestão de Chamados e Helpdesk de TI - Kim de Tarso
 
 API REST desenvolvida em ASP.NET Core para gerenciamento de chamados e atendimento de suporte técnico de TI.
 
