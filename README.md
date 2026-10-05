@@ -792,7 +792,7 @@ Para executar o projeto, é necessário possuir instalado:
 Depois que o repositório estiver publicado no GitHub:
 
 ```powershell
-git clone https://github.com/sKDTs/deskflow-final.git
+git clone https://github.com/sKDTs/deskflow-api-sistema-gestao-chamados-helpdesk-ti-kim-de-tarso.git
 ```
 
 Entrar na pasta:
@@ -1007,7 +1007,7 @@ O vídeo apresenta:
 Repositório público do projeto:
 
 ```text
-https://github.com/sKDTs/deskflow-final.git
+https://github.com/sKDTs/deskflow-api-sistema-gestao-chamados-helpdesk-ti-kim-de-tarso.git
 ```
 
 ---
