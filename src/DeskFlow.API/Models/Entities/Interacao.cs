@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace DeskFlow.API.Models.Entities;
 
 public class Interacao
@@ -6,6 +8,7 @@ public class Interacao
 
     public int ChamadoId { get; set; }
 
+    [JsonIgnore]
     public Chamado Chamado { get; set; } = null!;
 
     public string Autor { get; set; } = string.Empty;

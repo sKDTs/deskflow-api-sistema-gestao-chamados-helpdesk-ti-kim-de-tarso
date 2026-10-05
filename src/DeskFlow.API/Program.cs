@@ -14,6 +14,9 @@ builder.Services.AddDbContext<DeskFlowDbContext>(options =>
 builder.Services.AddScoped<CategoriaRepository>();
 builder.Services.AddScoped<CategoriaService>();
 
+builder.Services.AddScoped<ChamadoRepository>();
+builder.Services.AddScoped<ChamadoService>();
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
