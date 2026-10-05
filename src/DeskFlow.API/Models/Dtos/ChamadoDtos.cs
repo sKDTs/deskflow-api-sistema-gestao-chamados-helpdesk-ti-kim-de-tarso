@@ -14,3 +14,8 @@ public class CriarChamadoDto
 
     public int CategoriaId { get; set; }
 }
+
+public class EncerrarChamadoDto
+{
+    public string Solucao { get; set; } = string.Empty;
+}

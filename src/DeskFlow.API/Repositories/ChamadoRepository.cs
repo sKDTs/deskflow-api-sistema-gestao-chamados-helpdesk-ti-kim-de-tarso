@@ -36,6 +36,12 @@ public class ChamadoRepository
             .FirstOrDefaultAsync(c => c.Id == id);
     }
 
+    public async Task<Chamado?> GetByIdForUpdateAsync(int id)
+    {
+        return await _context.Chamados
+            .FirstOrDefaultAsync(c => c.Id == id);
+    }
+
     public async Task<bool> CategoriaExistsAsync(int categoriaId)
     {
         return await _context.Categorias

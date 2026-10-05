@@ -49,4 +49,22 @@ public class ChamadosController : ControllerBase
             new { id = chamado.Id },
             chamado);
     }
+
+    [HttpPost("{id:int}/iniciar")]
+    public async Task<IActionResult> Iniciar(int id)
+    {
+        await _service.IniciarAsync(id);
+
+        return NoContent();
+    }
+
+    [HttpPost("{id:int}/encerrar")]
+    public async Task<IActionResult> Encerrar(
+        int id,
+        EncerrarChamadoDto dto)
+    {
+        await _service.EncerrarAsync(id, dto);
+
+        return NoContent();
+    }
 }

@@ -53,11 +53,70 @@ public class ChamadoService
         return chamado;
     }
 
+    public async Task IniciarAsync(int id)
+    {
+        var chamado = await _repository.GetByIdForUpdateAsync(id);
+
+        if (chamado is null)
+        {
+            throw new KeyNotFoundException(
+                "Chamado não encontrado.");
+        }
+
+        if (chamado.Status != StatusChamado.Aberto)
+        {
+            throw new InvalidOperationException(
+                "Somente chamados com status Aberto podem ser iniciados.");
+        }
+
+        chamado.Status = StatusChamado.EmAndamento;
+
+        await _repository.SaveChangesAsync();
+    }
+
+    public async Task EncerrarAsync(
+        int id,
+        EncerrarChamadoDto dto)
+    {
+        if (string.IsNullOrWhiteSpace(dto.Solucao))
+        {
+            throw new ArgumentException(
+                "A solução é obrigatória para encerrar o chamado.");
+        }
+
+        if (dto.Solucao.Trim().Length > 2000)
+        {
+            throw new ArgumentException(
+                "A solução deve possuir no máximo 2000 caracteres.");
+        }
+
+        var chamado = await _repository.GetByIdForUpdateAsync(id);
+
+        if (chamado is null)
+        {
+            throw new KeyNotFoundException(
+                "Chamado não encontrado.");
+        }
+
+        if (chamado.Status != StatusChamado.EmAndamento)
+        {
+            throw new InvalidOperationException(
+                "Somente chamados EmAndamento podem ser encerrados.");
+        }
+
+        chamado.Status = StatusChamado.Fechado;
+        chamado.Solucao = dto.Solucao.Trim();
+        chamado.DataFechamento = DateTime.Now;
+
+        await _repository.SaveChangesAsync();
+    }
+
     private static void ValidarDados(CriarChamadoDto dto)
     {
         if (string.IsNullOrWhiteSpace(dto.Titulo))
         {
-            throw new ArgumentException("O título do chamado é obrigatório.");
+            throw new ArgumentException(
+                "O título do chamado é obrigatório.");
         }
 
         if (dto.Titulo.Trim().Length > 200)
