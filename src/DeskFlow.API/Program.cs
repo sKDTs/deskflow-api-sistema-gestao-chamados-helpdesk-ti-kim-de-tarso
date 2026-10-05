@@ -1,4 +1,5 @@
 using DeskFlow.API.Data;
+using DeskFlow.API.Middlewares;
 using DeskFlow.API.Repositories;
 using DeskFlow.API.Services;
 using Microsoft.EntityFrameworkCore;
@@ -23,6 +24,8 @@ builder.Services.AddScoped<InteracaoService>();
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {
