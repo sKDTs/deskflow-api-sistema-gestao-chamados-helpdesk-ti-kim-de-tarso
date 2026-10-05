@@ -24,8 +24,8 @@ public class InteracoesController : ControllerBase
             chamadoId,
             dto);
 
-        return Created(
-            $"/api/chamados/{chamadoId}/interacoes/{interacao.Id}",
+        return StatusCode(
+            StatusCodes.Status201Created,
             interacao);
     }
 }
