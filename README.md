@@ -792,13 +792,13 @@ Para executar o projeto, é necessário possuir instalado:
 Depois que o repositório estiver publicado no GitHub:
 
 ```powershell
-git clone URL_DO_REPOSITORIO
+git clone https://github.com/sKDTs/deskflow-final.git
 ```
 
 Entrar na pasta:
 
 ```powershell
-cd DeskFlow
+cd deskflow-final
 ```
 
 ---
@@ -1007,7 +1007,7 @@ O vídeo apresenta:
 Repositório público do projeto:
 
 ```text
-URL_DO_REPOSITORIO
+https://github.com/sKDTs/deskflow-final.git
 ```
 
 ---
