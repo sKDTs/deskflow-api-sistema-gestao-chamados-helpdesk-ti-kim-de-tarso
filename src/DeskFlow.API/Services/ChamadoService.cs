@@ -41,7 +41,7 @@ public class ChamadoService
         if (!categoriaExiste)
         {
             throw new KeyNotFoundException(
-                "A categoria informada n„o existe.");
+                "A categoria informada n√£o existe.");
         }
 
         var chamado = new Chamado
@@ -68,7 +68,7 @@ public class ChamadoService
         if (chamado is null)
         {
             throw new KeyNotFoundException(
-                "Chamado n„o encontrado.");
+                "Chamado n√£o encontrado.");
         }
 
         if (chamado.Status != StatusChamado.Aberto)
@@ -89,13 +89,13 @@ public class ChamadoService
         if (string.IsNullOrWhiteSpace(dto.Solucao))
         {
             throw new ArgumentException(
-                "A soluÁ„o È obrigatÛria para encerrar o chamado.");
+                "A solu√ß√£o √© obrigat√≥ria para encerrar o chamado.");
         }
 
         if (dto.Solucao.Trim().Length > 2000)
         {
             throw new ArgumentException(
-                "A soluÁ„o deve possuir no m·ximo 2000 caracteres.");
+                "A solu√ß√£o deve possuir no m√°ximo 2000 caracteres.");
         }
 
         var chamado = await _repository.GetByIdForUpdateAsync(id);
@@ -103,7 +103,7 @@ public class ChamadoService
         if (chamado is null)
         {
             throw new KeyNotFoundException(
-                "Chamado n„o encontrado.");
+                "Chamado n√£o encontrado.");
         }
 
         if (chamado.Status != StatusChamado.EmAndamento)
@@ -124,37 +124,43 @@ public class ChamadoService
         if (string.IsNullOrWhiteSpace(dto.Titulo))
         {
             throw new ArgumentException(
-                "O tÌtulo do chamado È obrigatÛrio.");
+                "O t√≠tulo do chamado √© obrigat√≥rio.");
         }
 
         if (dto.Titulo.Trim().Length > 200)
         {
             throw new ArgumentException(
-                "O tÌtulo deve possuir no m·ximo 200 caracteres.");
+                "O t√≠tulo deve possuir no m√°ximo 200 caracteres.");
         }
 
         if (string.IsNullOrWhiteSpace(dto.Descricao))
         {
             throw new ArgumentException(
-                "A descriÁ„o do chamado È obrigatÛria.");
+                "A descri√ß√£o do chamado √© obrigat√≥ria.");
         }
 
         if (string.IsNullOrWhiteSpace(dto.SolicitanteNome))
         {
             throw new ArgumentException(
-                "O nome do solicitante È obrigatÛrio.");
+                "O nome do solicitante √© obrigat√≥rio.");
+        }
+
+        if (dto.Descricao.Trim().Length > 2000)
+        {
+            throw new ArgumentException(
+                "A descri√ß√£o do chamado deve possuir no m√°ximo 2000 caracteres.");
         }
 
         if (dto.SolicitanteNome.Trim().Length > 150)
         {
             throw new ArgumentException(
-                "O nome do solicitante deve possuir no m·ximo 150 caracteres.");
+                "O nome do solicitante deve possuir no m√°ximo 150 caracteres.");
         }
 
         if (!Enum.IsDefined(dto.Prioridade))
         {
             throw new ArgumentException(
-                "A prioridade informada È inv·lida.");
+                "A prioridade informada √© inv√°lida.");
         }
     }
 
