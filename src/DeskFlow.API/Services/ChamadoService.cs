@@ -13,9 +13,17 @@ public class ChamadoService
         _repository = repository;
     }
 
-    public async Task<List<Chamado>> GetAllAsync()
+    public async Task<List<Chamado>> GetAllAsync(
+        StatusChamado? status,
+        Prioridade? prioridade,
+        int? categoriaId)
     {
-        return await _repository.GetAllAsync();
+        ValidarFiltros(status, prioridade, categoriaId);
+
+        return await _repository.GetAllAsync(
+            status,
+            prioridade,
+            categoriaId);
     }
 
     public async Task<Chamado?> GetByIdAsync(int id)
@@ -147,6 +155,18 @@ public class ChamadoService
         {
             throw new ArgumentException(
                 "A prioridade informada é inválida.");
+        }
+    }
+
+    private static void ValidarFiltros(
+        StatusChamado? status,
+        Prioridade? prioridade,
+        int? categoriaId)
+    {
+        if (categoriaId.HasValue && categoriaId.Value <= 0)
+        {
+            throw new ArgumentException(
+                "O CategoriaId deve ser maior que zero.");
         }
     }
 }

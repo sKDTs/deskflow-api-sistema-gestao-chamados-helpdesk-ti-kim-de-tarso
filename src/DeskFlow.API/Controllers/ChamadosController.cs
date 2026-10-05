@@ -1,4 +1,5 @@
 using DeskFlow.API.Models.Dtos;
+using DeskFlow.API.Models.Entities;
 using DeskFlow.API.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,9 +17,15 @@ public class ChamadosController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll(
+        [FromQuery] StatusChamado? status,
+        [FromQuery] Prioridade? prioridade,
+        [FromQuery] int? categoriaId)
     {
-        var chamados = await _service.GetAllAsync();
+        var chamados = await _service.GetAllAsync(
+            status,
+            prioridade,
+            categoriaId);
 
         return Ok(chamados);
     }

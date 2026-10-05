@@ -18,11 +18,32 @@ public class ChamadoRepository
         await _context.Chamados.AddAsync(chamado);
     }
 
-    public async Task<List<Chamado>> GetAllAsync()
+    public async Task<List<Chamado>> GetAllAsync(
+        StatusChamado? status,
+        Prioridade? prioridade,
+        int? categoriaId)
     {
-        return await _context.Chamados
+        var query = _context.Chamados
             .AsNoTracking()
             .Include(c => c.Categoria)
+            .AsQueryable();
+
+        if (status.HasValue)
+        {
+            query = query.Where(c => c.Status == status.Value);
+        }
+
+        if (prioridade.HasValue)
+        {
+            query = query.Where(c => c.Prioridade == prioridade.Value);
+        }
+
+        if (categoriaId.HasValue)
+        {
+            query = query.Where(c => c.CategoriaId == categoriaId.Value);
+        }
+
+        return await query
             .OrderByDescending(c => c.DataAbertura)
             .ToListAsync();
     }
