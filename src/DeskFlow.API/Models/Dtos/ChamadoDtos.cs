@@ -19,3 +19,10 @@ public class EncerrarChamadoDto
 {
     public string Solucao { get; set; } = string.Empty;
 }
+
+public class CriarInteracaoDto
+{
+    public string Autor { get; set; } = string.Empty;
+
+    public string Mensagem { get; set; } = string.Empty;
+}

@@ -17,6 +17,9 @@ builder.Services.AddScoped<CategoriaService>();
 builder.Services.AddScoped<ChamadoRepository>();
 builder.Services.AddScoped<ChamadoService>();
 
+builder.Services.AddScoped<InteracaoRepository>();
+builder.Services.AddScoped<InteracaoService>();
+
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
