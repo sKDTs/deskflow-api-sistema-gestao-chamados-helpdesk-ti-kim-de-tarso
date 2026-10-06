@@ -982,7 +982,7 @@ A autenticação JWT não faz parte da implementação obrigatória atual e pode
 O vídeo de apresentação do projeto será disponibilizado no link abaixo:
 
 ```text
-LINK_DO_VIDEO
+[LINK_DO_VIDEO](https://drive.google.com/file/d/1V6Og6gtTHA19JbPZQVugmg2YsR9mRTeW/view?usp=sharing)
 ```
 
 O vídeo apresenta:
